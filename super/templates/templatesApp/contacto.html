@@ -1,0 +1,43 @@
+{%extends 'templatesApp/base.html'%}
+{%load static%}
+
+{%block content%}
+
+        <hr>
+        <form class="animate-on-scroll" onsubmit="return validar()" method="post" class="row g-3" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="form-group inquiry-type">
+                <label for="inquiryType" class="form-label">Tipo de Consulta:</label>
+                <select id="inquiryType" name="tipo_consulta" class="form-control">
+                    <option value="Pregunta General">Pregunta General</option>
+                    <option value="Comentario sobre producto">Comentario sobre Producto</option>
+                    <option value="Problema con pedido">Problema con Pedido</option>
+                    <option value="Queja">Queja</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="input-email" placeholder="" name="correo">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group file-upload">
+                <label for="fileUpload" class="form-label">Archivo Adjunto (opcional):</label>
+                <input type="file" id="fileUpload" name="imagen" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label class="form-label">Teléfono</label>
+                <input id="input-fono" class="form-control" type="number" placeholder="+569 6354 6352" name="telefono">
+                <div class="error" id="phoneError"></div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">¿Desea proporcionar más información sobre su queja?</label>
+                <textarea name="descripcion" class="form-control"></textarea>
+                <small id="additionalInfoHelp" class="form-text text-muted">Escriba aquí más detalles sobre su queja si lo desea. Máximo 500 caracteres.</small>
+                <div id="infoError" class="text-danger small mt-1"></div>
+            </div>
+            <div class="botones text-center">
+                <button class="button">Enviar</button>
+            </div>
+        </form>
+    
+{%endblock%}

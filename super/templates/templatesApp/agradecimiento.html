@@ -1,0 +1,19 @@
+{%extends 'templatesApp/base.html'%}
+
+{%load static%}
+
+{%block content%}
+<div class="row animate-on-scroll">
+    
+    <div class="col text-center">
+        <h3>¡Muchas gracias!</h3>
+        <p>Sus comentarios son importantes para poder seguir mejorando nuestro servicio.</p>
+        <img src="{%static 'img/papel-picado.gif'%}" width="200px">
+        <br>
+        <a href="/contacto/" class="btn btn-success">Realizar otra encuesta</a>
+        <a href="/" class="btn btn-primary">Volver a inicio</a>
+    </div>
+    
+</div>
+
+{%endblock%}

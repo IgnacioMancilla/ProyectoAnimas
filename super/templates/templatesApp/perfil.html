@@ -1,0 +1,75 @@
+{%extends 'templatesApp/base.html'%}
+
+{%load static%}
+
+{%block content%}
+{%if user.is_superuser%}
+<div class="d-flex justify-content-end">
+<div class="btn-group ">
+  <button type="button" class="btn btn-success ">Herramientas</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/crear_usuario/"><img src="https://cdn-icons-png.flaticon.com/512/4175/4175032.png" class="mx-2" width="25px">Crear usuario</a></li>
+    <li><a class="dropdown-item" href="/lista_usuarios/"><img src="https://cdn-icons-png.flaticon.com/512/839/839860.png" class="mx-2" width="25px">Lista de usuarios</a></li>
+
+  </ul>
+</div>
+</div>
+<br>
+{%endif%}
+<center class="animate-on-scroll">
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="card-img-top" alt="foto_perfil">
+            <div class="card-body">
+              <h5 class="card-title">Nombre de usuario</h5>
+              <p>{{user.username}}</p>
+              {%if user.is_superuser%}
+              <p class="card-text">Privilegios: Administrador</p>
+              {%else%}
+              <p class="card-text">Privilegios: Estandar</p>
+              {%endif%}
+        <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Cambiar contraseña        
+                </button>
+                {%block aviso%}
+        
+                {%endblock%}
+            </div>
+          </div>
+          
+</div>
+
+</center>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cambiar contraseña</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                {%csrf_token%}
+                <label for="contraseña">Ingrese nueva contraseña</label>
+                <input type="text" class="form-control" name="contraseña" id="contraseña">
+                <label for="re_contraseña">Re-ingrese nueva contraseña</label>
+                <input type="text" class="form-control" name="re_contraseña" id="contraseña">
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

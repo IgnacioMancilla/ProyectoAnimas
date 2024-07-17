@@ -1,0 +1,63 @@
+{%extends 'templatesApp/base.html'%}
+{%load static%}
+
+{%block content%}
+
+
+
+    <main>
+        <section class="welcome-text text-center mb-5 animate-on-scroll">
+            <h2>Bienvenidos a Supermercado Las Animas</h2>
+            <h1>{{text}}</h1>
+            <p>Ofrecemos una amplia gama de productos frescos y de calidad para satisfacer todas tus necesidades diarias.</p>
+        </section>
+    </main>
+
+    <section class="hero animate-on-scroll">
+        <div class="hero-content"></div>
+        <div class="hero-image">
+            <div class="slider-frame">
+                <ul>
+                    <li><img src="https://media.istockphoto.com/id/172784129/es/foto/supermercado-moderna.jpg?s=612x612&w=0&k=20&c=canP_vdtuQcs3FnDtDmkdTXy6yBLSIgxVC_4R1j2_gg=" alt=""></li>
+                    <li><img src="https://www.diariosustentable.com/wp-content/uploads/2023/09/Supermercados-Cencosud-Chile.jpg" alt=""></li>
+                    <li><img src="https://www.cencosud.com/cencosud/site/artic/20220310/imag/foto_0000002620220310141152/Jumbo_saludable_1.jpg" alt=""></li>
+                    <li><img src="https://redgol.cl/__export/1678731387409/sites/redgol/img/2023/03/13/cierre-de-supermercados_crop1678731386723.jpg_242310155.jpg" alt=""></li>
+                    <li><img src="https://www.terra.cl/u/fotografias/m/2023/10/13/f608x342-45230_74953_5050.jpg" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-showcase animate-on-scroll">
+        <h2>Productos Destacados</h2>
+        <div class="product-cards">
+          <div class="product-card">
+            <img src="https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/articulos/productos-lacteos.jpg" alt="lacteos">
+            <h3>Lacteos</h3>
+            <p>"Descubre nuestra selección fresca y nutritiva de lácteos, desde leche y yogur hasta deliciosos quesos, todo cuidadosamente seleccionado para tu bienestar diario."</p>
+            <a href="/categoria/" class="btn btn-secondary">Ver más</a>
+          </div>
+          <div class="product-card">
+            <img src="https://img.freepik.com/foto-gratis/carne-cruda-mesa_23-2150857912.jpg" alt="carnes">
+            <h3>Carnes</h3>
+            <p>"Explora nuestra variedad de carnes frescas y de calidad, desde cortes tiernos de res y cerdo hasta pollo fresco, perfectos para tus comidas cotidianas y ocasiones especiales."</p>
+            <a href="/categoria/" class="btn btn-secondary">Ver más</a>
+          </div>
+          <div class="product-card">
+            <img src="https://www.mndelgolfo.com/blog/wp-content/uploads/2022/02/herramientas-manuales-basicas-02-2022-07.jpg" alt="Producto 3">
+            <h3>Herramientas</h3>
+            <p>"Descubre nuestra amplia gama de herramientas, desde útiles básicos hasta equipos especializados, todo pensado para ayudarte a completar tus proyectos con eficiencia."</p>
+            <a href="/categoria/" class="btn btn-secondary">Ver más</a>
+          </div>
+        </div>
+      </section>
+      
+    <h2 class="animate-on-scroll">Nuestra Ubicación</h2>
+    <div class="d-flex justify-content-end g-sm-5">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49028.39140141586!2d-73.26769813349053!3d-39.823263664279224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9615ee891aab33e5%3A0x35c9b4ab79b2d79b!2sValdivia%2C%20Los%20R%C3%ADos!5e0!3m2!1ses-419!2scl!4v1718586564999!5m2!1ses-419!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <br>
+    <br>
+   
+
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends 'templatesApp/base.html'%}
+{%load static%}
+
+{%block content%}
+{%if user.is_superuser%}
+<div class="animate-on-scroll">
+    <a href="/gestion/" class="btn btn-primary mb-3">Volver</a>
+</div>
+    <form method="post" id="addProductoForm" enctype="multipart/form-data" class="animate-on-scroll">
+    {%csrf_token%}
+    <div class="mb-3">
+        <label for="productoName" class="form-label">Nombre del Producto</label>
+        <input type="text" class="form-control" id="productoName" name="productoName" value="{{producto.nombre}}" required>
+    </div>
+    <label for="categoria" class="form-label">Categoría</label>
+                            <select id="categoria" name="categoria" class="form-control">
+                                <option value="Lacteos" {%if producto.categoria == "Lacteos"%} selected {%endif%}>Lacteos</option>
+                                <option value="Carnes" {%if producto.categoria == "Carnes"%} selected {%endif%}>Carnes</option>
+                                <option value="Herramientas" {%if producto.categoria == "Herramientas"%} selected {%endif%}>Herramientas</option>
+                                <option value="Frutas y Verduras" {%if producto.categoria == "Frutas y verduras"%} selected {%endif%}>Frutas y Verduras</option>
+                                <option value="Cuidado Personal"{%if producto.categoria == "Cuidado personal"%} selected {%endif%}>Cuidado Personal</option>
+                                <option value="Mascotas" {%if producto.categoria == "Mascotas"%} selected {%endif%}>Mascotas</option>
+                                <option value="Envasados" {%if producto.categoria == "Envasados"%} selected {%endif%}>Envasados</option>
+                                <option value="Despensa" {%if producto.categoria == "Despensa"%} selected {%endif%}>Despensa</option>
+                            </select>
+    <div class="mb-3">
+        <label for="productoStock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="productoStock" name="productoStock" value="{{producto.stock}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="productoPrice" class="form-label">Precio</label>
+        <input type="number" step="0.01" class="form-control" id="productoPrice" name="productoPrice" value="{{producto.precio}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen de producto</label>
+        <input type="file" class="form-control" id="imagen" name="imagen">
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar</button>
+</form>
+{%else%}
+<h3 class="text-center">Debes estar logeado para acceder a este recurso</h3>
+<div class="text-center">
+    <a href="/login/" class="btn btn-success">Login</a>
+</div>
+{%endif%}
+{%endblock%}

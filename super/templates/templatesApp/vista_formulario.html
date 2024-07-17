@@ -1,0 +1,81 @@
+{%extends 'templatesApp/base.html'%}
+{%load static%}
+{%block content%}
+{%if data%}
+<nav aria-label="breadcrumb" class="animate-on-scroll">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Formularios</li>
+  </ol>
+</nav>
+<table class="table">
+    <thead class="animate-on-scroll">
+      <tr>
+        <th scope="col">Tipo de consulta</th>
+        <th scope="col">Detalles</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody class="animate-on-scroll">
+      
+      {%for i in data%}
+      <tr>
+        <td class="animate-on-scroll">{{i.tipo_consulta}}</td>
+        <td><a href="/detalles/{{i.id}}/" class="btn btn-primary btn-sm">Ver detalles</a>
+          {%if i.estado == "Pendiente"%}
+          <a href="/aprobar/{{i.id}}/" class="btn btn-success btn-sm">Marcar como resuelta</a>
+          {%else%}
+          {%endif%}
+        
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Eliminar
+          </button>
+
+          
+          </td>
+          <td class="animate-on-scroll">
+            <p>{{i.estado}}</p>
+          </td>
+         
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar formulario</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro de eliminar este formulario?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                  <a href="/eliminar_formulario/{{i.id}}/" class="btn btn-danger">Eliminar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </tr>
+      {%endfor%}
+     
+  
+    </tbody>
+  </table>
+
+<!--Cuerpo del modal-->
+
+
+
+<!--Cuerpo del modal-->
+
+{%else%}
+
+<h3 class="text-center">Sin datos ingresados</h3>
+<br>
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <img src="{%static 'img/sapiens2.png'%}" class="img-fluid">
+  </div>
+  <div class="col"></div>
+</div>
+{%endif%}
+{%endblock%}

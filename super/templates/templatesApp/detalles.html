@@ -1,0 +1,41 @@
+{%extends 'templatesApp/base.html'%}
+
+{%block content%}
+
+<nav aria-label="breadcrumb" class="animate-on-scroll">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/formularios/">Formularios</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+  </ol>
+</nav>
+
+<table class="table animate-on-scroll">
+    <thead>
+      <tr>
+        <th scope="col">ID Consulta</th>
+        <th scope="col">Tipo Consulta</th>
+        <th scope="col">Correo Electrónico</th>
+        <th scope="col">Archivo Adjunto</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Información de la queja o consulta</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.tipo_consulta}}</td>
+        <td>{{data.correo_electronico}}</td>
+        {%if data.imagen%}
+        <td><img class="img-fluid rounded" width="150px" src="{{data.imagen.url}}"></td>
+        {%else%}
+        <td>Sin archivo adjunto</td>
+        {%endif%}
+        <td>{{data.telefono}}</td>
+        <td>{{data.descripcion}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+{%endblock%}

@@ -1,0 +1,66 @@
+{%extends 'templatesApp/base.html'%}
+
+{%block content%}
+
+<div class="animate-on-scroll">
+  <a href="/perfil/{{user.id}}/" class="btn btn-primary mb-3">Volver</a>
+</div>
+<table class="table animate-on-scroll">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre Usuario</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Correo Electrónico</th>
+        <th scope="col">Fecha Creación</th>
+        <th scope="col">Último inicio de sesión</th>
+        <th scope="col">Privigelios</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for i in data%}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.username}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.date_joined}}</td>
+        <td>{{i.last_login}}</td>
+
+        {%if i.is_superuser == True%}
+        <td>Administrador</td>
+        {%else%}
+        <td>Estandar</td>
+        {%endif%}
+
+        {%if i.username == "admin"%}
+        {%else%}
+        <td>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Acciones
+                </a>
+              
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/eliminar_usuario/{{i.id}}/">Eliminar usuario</a></li>
+                  <li><a class="dropdown-item" href="/restablecer_contraseña/{{i.id}}/">Restablecer contraseña</a></li>
+                  {%if i.is_superuser%}
+                  <a href="/cambiar_estandar/{{i.id}}/" class="dropdown-item">Cambiar a estándar</a>
+                  {%else%}
+                  <a href="/cambiar_admin/{{i.id}}/" class="dropdown-item">Cambiar a administrador</a>
+                  {%endif%}
+                </ul>
+              </div>
+            
+        </td>
+        {%endif%}
+
+      </tr>
+        {%endfor%}
+    </tbody>
+  </table>
+
+{%endblock%}

@@ -1,0 +1,58 @@
+{%extends 'templatesApp/base.html'%}
+{%load static%}
+
+{%block content%}
+
+
+    <main class="container mt-4 animate-on-scroll">
+        <div class="row d-flex justify-content-center flex-wrap">
+            {%if producto%}
+            <div class="row">
+                <div class="col-2 mb-4">
+                    <a href="/categoria/" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+            {%for i in producto%}
+            <div class="col-md-2">
+                
+                <div class="card2">
+                    <img src="{{i.imagen.url}}" alt="Queso" class="card-img-top">
+                    <div class="card-content2">
+                        <h2>{{i.nombre}}</h2>
+                        <p class="price">${{i.precio}} CLP</p>
+                        <button class="btn btn-primary">Comprar ahora</button>
+                    </div>
+                </div>
+             
+            </div>
+            {%endfor%}
+            {%else%}
+            <div class="row">
+                <div class="col-2 mb-4">
+                    <a href="/categoria/" class="btn btn-primary">Volver</a>
+                </div>
+            </div>
+            
+            <h3 class="text-center">Sin existencias</h3>
+            <br>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <img src="{%static 'img/sapiens.png'%}" class="img-fluid">
+
+                </div>
+                <div class="col"></div>
+            </div>
+            {%endif%}
+          
+            
+           
+            
+            
+            
+    </main>
+   
+    <br>
+    <hr>
+
+    {%endblock%}

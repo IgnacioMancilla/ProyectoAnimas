@@ -1,0 +1,35 @@
+{%extends 'templatesApp/base.html'%}
+
+{%block content%}
+{%if user.is_authenticated%}
+
+<div class="text-center animate-on-scroll">
+<h2>Ya estás logeado</h2>
+<a href="/gestion/" class="btn btn-success">Gestión</a>
+</div>
+
+{%else%}
+
+<div class="container animate-on-scroll">
+
+
+<div class="row mt-5 text-center d-flex justify-content-center" style="margin-bottom: 200px;">
+    
+    <div class="col-xs-12 col-md-4 text-center">
+        <form method="POST">
+            {%csrf_token%}
+            <input class="form-control form-control-lg" type="text" name="username" id="username" placeholder="Usuario" aria-label=".form-control-lg example">
+        
+            <label for="inputPassword5" class="form-label mt-2">Contraseña</label>
+            <input type="password" id="inputPassword5" name="password" id="password" class="form-control" aria-describedby="passwordHelpBlock">
+            {%block invalido%}
+
+            {%endblock%}
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Ingresar</button>
+        </form>
+    </div>
+</div>
+</div>
+{%endif%}
+
+{%endblock%}

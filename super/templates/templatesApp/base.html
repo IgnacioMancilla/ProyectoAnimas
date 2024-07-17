@@ -1,0 +1,137 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+    <link rel="stylesheet" href="{%static 'css/estilo.css'%}">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/862/862856.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #00704A;">
+      <div class="container-fluid">
+        <div class="logo mx-3">
+            <a href="/login/">
+                <img src="https://th.bing.com/th/id/OIG4.huxyc95An4oQCJl5K_2k?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Imagen Supermercado">
+            </a>
+        </div>
+        <a class="navbar-brand">Supermercado Las Animas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            
+            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+            <a class="nav-link" href="/categoria/">Categorías</a>
+            <a class="nav-link" href="/contacto/">Dudas y Reclamos</a>
+             
+              {%if user.is_superuser%}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn btn-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Administrador
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/perfil/{{user.id}}/"><img src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" width="25px" class="mx-1">Perfil</a></li>
+                  <li><a class="dropdown-item" href="/formularios/"><img src="https://cdn-icons-png.flaticon.com/512/3447/3447545.png" class="mx-1" width="25px">Formularios</a></li>
+                  <li><a class="dropdown-item" href="/gestion/"><img src="https://cdn-icons-png.flaticon.com/512/4654/4654577.png" class="mx-1" width="25px">Gestión</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="btn btn-danger" href="/logout_user/">Cerrar Sesión</a></li>
+
+                </ul>
+              </li>
+              {%elif user.is_authenticated%}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn btn-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Usuario
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/perfil/{{user.id}}/"><img src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" width="25px" class="mx-1">Perfil</a></li>
+                  <li><a href="/gestion/" class="dropdown-item"><img src="https://cdn-icons-png.flaticon.com/512/6735/6735211.png" class="mx-1" width="25px">Inventario</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="btn btn-danger" href="/logout_user/">Cerrar Sesión</a></li>
+
+                </ul>
+              </li>
+              
+              {%else%}
+              {%endif%}
+              
+            </div>
+          
+            
+         
+
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+<div class="container">
+    {%block content%}
+
+    {%endblock%}
+
+</div>
+
+
+
+    <footer class="fixed-bottom g col-12 row-cols-auto">
+        <p>&copy; 2024 Supermercado. Todos los derechos reservados.</p>
+        
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{%static 'js/validacion.js'%}"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var columns = document.querySelectorAll('.animate-on-scroll');
+
+          function handleScroll() {
+              columns.forEach(function (column) {
+                  if (isElementInViewport(column)) {
+                      column.classList.add('is-visible');
+                  }
+              });
+          }
+
+          // Función para verificar si un elemento está en el área visible
+          function isElementInViewport(el) {
+              var rect = el.getBoundingClientRect();
+              return (
+                  rect.top <= window.innerHeight && rect.bottom >= 0 &&
+                  rect.left <= window.innerWidth && rect.right >= 0
+              );
+          }
+
+          // Manejar eventos de desplazamiento y redimensionamiento
+          window.addEventListener('scroll', handleScroll);
+          window.addEventListener('resize', handleScroll);
+
+          // Llamada inicial para manejar elementos visibles al cargar la página
+          handleScroll();
+      });
+  
+  </script>
+  <script>
+    
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtén el elemento por su clase
+    var elemento = document.querySelector('.elemento');
+
+    // Añade la clase 'visible' después de un breve retraso (puedes ajustar el valor)
+    setTimeout(function() {
+      elemento.classList.add('visible');
+    }, 30); // 500 milisegundos (medio segundo) de retraso
+  });
+
+  
+  </script>
+
+
+</body>
+</html>

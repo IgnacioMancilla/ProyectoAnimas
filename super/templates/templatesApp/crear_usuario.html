@@ -1,0 +1,59 @@
+{%extends 'templatesApp/base.html'%}
+
+{%block content%}
+<div class="animate-on-scroll">
+
+
+<a href="/perfil/{{user.id}}/" class="btn btn-primary mx-5">Volver</a>
+{%block repetido%}
+
+{%endblock%}
+</div>
+<br>
+<br>
+
+<div class="row mb-5 animate-on-scroll">
+    <div class="col"></div>
+    <div class="col-8">
+        <form method="post">
+            {%csrf_token%}
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input id="username" name="username" class="form-control" type="text" placeholder="Nombre de usuario" aria-label="default input example">
+        <br>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input id="nombre" name="nombre" class="form-control" type="text" placeholder="Nombre" aria-label="default input example">
+        <br>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input id="apellido" name="apellido" class="form-control" type="text" placeholder="Apellido" aria-label="default input example">
+        <br>
+        <label for="correo" class="form-label">Correo Electrónico</label>
+        <input id="correo" name="correo" class="form-control" type="email" placeholder="trabajador@gmail.com" aria-label="default input example">
+        <br>
+        <label for="#" class="form-label">Tipo cuenta</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipo_cuenta" id="flexRadioDefault1" value="administrador">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Cuenta administrador
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipo_cuenta" id="flexRadioDefault2" checked value="estandar">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Cuenta estandar
+            </label>
+          </div>
+          <br>
+
+              <button type="submit" class="btn btn-warning">Crear usuario</button>
+          
+              <div class="alert alert-dark mt-3" role="alert">
+                La contraseña de los nuevos usuarios por defecto siempre será su nombre de usuario.
+              </div>
+
+
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+
+{%endblock%}
